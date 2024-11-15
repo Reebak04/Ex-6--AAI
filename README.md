@@ -27,40 +27,27 @@ Iterate through each word in the tokenized text.
 ## PROGRAM:
 ```
 !pip install nltk
-
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
-
 f = open("/content/sample_data.txt", "r")
 sentences = f.readlines()
 f.close()
-
 verbs = [[] for _ in sentences]
 i=0
 for sentence in sentences:
   print("Sentence",i+1,":", sentence)
-
-  # Tokenize the sentence into words
   words = word_tokenize(sentence)
-
-  # Identify the parts of speech for each word
   pos_tags = nltk.pos_tag(words)
-
-  # Print the parts of speech
   for word,tag in pos_tags:
     print(word,"->",tag)
-
-    # Save verbs
     if tag.startswith('VB'):
       verbs[i].append(word)
   i+=1
   print("\n\n")
-
-# Identify synonyms and antonyms for each word
 print("Synonyms and Antonymns for verbs in each sentence:\n")
 i=0
 for sentence in sentences:
@@ -76,8 +63,6 @@ for sentence in sentences:
         if lemma.antonyms():
           for antonym in lemma.antonyms():
             antonyms.append(antonym.name())
-
-    # Print the synonyms and antonyms
     print("Synonyms:",set(synonyms))
     print("Antonyms:", set(antonyms) if antonyms else "None")
     print()
