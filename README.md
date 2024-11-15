@@ -18,10 +18,15 @@ Accept user input for the text.
 Tokenize the input text into words using the word_tokenize function.
 ### STEP 5:
 Iterate through each word in the tokenized text.
+
 •	Perform part-of-speech tagging on the tokenized words using nltk.pos_tag.
+
 •	Print each word along with its corresponding part-of-speech tag.
+
 •	For each verb , iterate through its synsets (sets of synonyms) using wordnet.synsets(word).
+
 •	Extract synonyms and antonyms using lemma.name() and lemma.antonyms()[0].name() respectively.
+
 •	Print the unique sets of synonyms and antonyms.
 
 ## PROGRAM:
